@@ -21,6 +21,7 @@ public class WxIndexController {
      */
     @RequestMapping("/index")
     public Object index() {
+        logger.info("登录信息：hello world, this is wx service1");
         return ResponseUtil.ok("hello world, this is wx service");
     }
 

@@ -31,6 +31,7 @@ import org.linlinjava.litemall.db.util.OrderUtil;
 import org.linlinjava.litemall.core.util.IpUtil;
 import org.linlinjava.litemall.wx.task.OrderUnpaidTask;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -109,6 +110,8 @@ public class WxOrderService {
     @Autowired
     private TaskService taskService;
 
+    @Autowired
+    private Environment environment;
     /**
      * 订单列表
      *
@@ -545,6 +548,8 @@ public class WxOrderService {
      */
     @Transactional
     public Object prepay(Integer userId, String body, HttpServletRequest request) {
+
+        System.out.println( environment.getProperty("litemall.wx.key-path"));
         if (userId == null) {
             return ResponseUtil.unlogin();
         }
