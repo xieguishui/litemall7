@@ -85,9 +85,9 @@ litemall:
     active: local
     # 本地对象存储配置信息
     local:
-      storagePath: storage
+      storagePath: /var/lib/tomcat/webapps/storage
       # 这个地方应该是wx模块的WxStorageController的fetch方法对应的地址
-      address: http://localhost:8080/wx/storage/fetch/
+      address: http://152.136.176.218:8088/storage/
     # 阿里云对象存储配置信息
     aliyun:
       endpoint: oss-cn-shenzhen.aliyuncs.com
