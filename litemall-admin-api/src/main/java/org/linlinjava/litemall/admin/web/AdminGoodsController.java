@@ -97,12 +97,34 @@ public class AdminGoodsController {
      * @param id
      * @return
      */
-    @RequiresPermissions("admin:goods:read")
-    @RequiresPermissionsDesc(menu = {"商品管理", "商品管理"}, button = "详情")
     @GetMapping("/detail")
     public Object detail(@NotNull Integer id) {
         return adminGoodsService.detail(id);
 
     }
+
+    @GetMapping("/detailByQRCode")
+    public Object detailByQRCode(@NotNull String  goodsSn) {
+        return adminGoodsService.detailByQRCode(goodsSn);
+     }
+
+
+
+    @GetMapping("/goodsKeywords")
+    public Object detailByGoodsName(String  keyword) {
+        System.out.println("1111111111  "+keyword);
+        System.out.println(adminGoodsService.detailByGoodsName(keyword));
+        return adminGoodsService.detailByGoodsName(keyword);
+    }
+
+
+
+    @GetMapping("/isExistsGoodsNo")
+    public Object isExistsGoodsNo(String  goodsNo) {
+         System.out.println(adminGoodsService.getGoodsSn(goodsNo));
+        return adminGoodsService.getGoodsSn(goodsNo);
+    }
+
+
 
 }

@@ -165,7 +165,7 @@ public class AdminGoodsService {
             }
         }
         goods.setRetailPrice(retailPrice);
-        
+
         // 商品基本信息表litemall_goods
         if (goodsService.updateById(goods) == 0) {
             throw new RuntimeException("更新数据失败");
@@ -352,4 +352,43 @@ public class AdminGoodsService {
         return ResponseUtil.ok(data);
     }
 
+    public Object detailByQRCode(String goodsSn) {
+        LitemallGoods goods = goodsService.findByGoodsSn(goodsSn);
+/*        Integer   id =   goods.getId();
+        List<LitemallGoodsProduct> products = productService.queryByGid(id);
+        List<LitemallGoodsSpecification> specifications = specificationService.queryByGid(id);
+        List<LitemallGoodsAttribute> attributes = attributeService.queryByGid(id);
+
+        Integer categoryId = goods.getCategoryId();
+        LitemallCategory category = categoryService.findById(categoryId);
+        Integer[] categoryIds = new Integer[]{};
+        if (category != null) {
+            Integer parentCategoryId = category.getPid();
+            categoryIds = new Integer[]{parentCategoryId, categoryId};
+        }*/
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("goods", goods);
+/*        data.put("specifications", specifications);
+        data.put("products", products);
+        data.put("attributes", attributes);
+        data.put("categoryIds", categoryIds);*/
+
+        return ResponseUtil.ok(data);
+    }
+
+    public Object detailByGoodsName(String keywords) {
+        List<LitemallGoods> list  =    goodsService.findByGoodsName(keywords);
+        Map<String, Object> data = new HashMap<>();
+        data.put("list", list);
+        return ResponseUtil.ok(data);
+    }
+
+    public Object getGoodsSn(String goodsNo) {
+
+        LitemallGoods goods =goodsService.findByGoodsSn(goodsNo);
+        Map<String, Object> data = new HashMap<>();
+        data.put("goods", goods);
+        return ResponseUtil.ok(data);
+    }
 }

@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: db, core, wx
+  messages:
+    encoding: UTF-8
+
+server.port: 8082
+server.ssl.key-store: /root/jdk1.8.0_131/bin/mse_dev.p12
+server.ssl.key-store-password: 123456
+server.ssl.keyStoreType: PKCS12
+server.ssl.keyAlias: mse_dev
+
+logging:
+  level:
+    root:  ERROR
+    org.springframework:  ERROR
+    org.mybatis:  ERROR
+    org.linlinjava.litemall.wx:  DEBUG
+    org.linlinjava.litemall:  ERROR
